@@ -1,33 +1,34 @@
-PowerModeView = require './power-mode-view'
 {CompositeDisposable} = require 'atom'
+_ = require 'underscore-plus'
 
 module.exports = PowerMode =
-  powerModeView: null
-  modalPanel: null
   subscriptions: null
+  editor: null
+  throttledShake: null
 
   activate: (state) ->
-    @powerModeView = new PowerModeView(state.powerModeViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @powerModeView.getElement(), visible: false)
+    @editor = document.getElementsByTagName("atom-workspace")[0]
 
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
+    @throttledShake = _.throttle @shake, 100, trailing: false
+
     @subscriptions = new CompositeDisposable
-
-    # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'power-mode:toggle': => @toggle()
+    @subscriptions.add atom.workspace.observeTextEditors (editor) =>
+      @subscriptions.add editor.onDidChangeCursorPosition (event) =>
+        @onCursorChange(event)
 
   deactivate: ->
-    @modalPanel.destroy()
     @subscriptions.dispose()
-    @powerModeView.destroy()
 
-  serialize: ->
-    powerModeViewState: @powerModeView.serialize()
+  shake: ->
+    intensity = 1 + 2 * Math.random()
+    x = intensity * (if Math.random() > 0.5 then -1 else 1)
+    y = intensity * (if Math.random() > 0.5 then -1 else 1)
 
-  toggle: ->
-    console.log 'PowerMode was toggled!'
+    @editor.style.transform = "translate3d(#{x}px, #{y}px, 0)"
 
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
-    else
-      @modalPanel.show()
+    setTimeout =>
+      @editor.style.transform = ""
+    , 75
+
+  onCursorChange: (e) ->
+    @throttledShake()

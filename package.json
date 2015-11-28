@@ -2,17 +2,15 @@
   "name": "power-mode",
   "main": "./lib/power-mode",
   "version": "0.0.0",
-  "description": "A short description of your package",
-  "keywords": [
-  ],
-  "activationCommands": {
-    "atom-workspace": "power-mode:toggle"
-  },
-  "repository": "https://github.com/atom/power-mode",
+  "description": "Add an almighty power to your Atom",
+  "keywords": [],
+  "activationCommands": {},
+  "repository": "https://github.com/lukyth/power-mode",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "underscore-plus": "^1.6.6"
   }
 }
