@@ -1,5 +1,11 @@
-# power-mode package
+# Power Mode
 
-A short description of your package.
+Add an almighty power to your Atom
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
+
+## TODO
+- [] Write tests
+- [] Spawn particle at the cursor
+- [] Change particle color to match with syntax highlight
+- [] Improve performance (Right now, this's gonna burn your laptop's CPU)
