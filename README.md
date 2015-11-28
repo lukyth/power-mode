@@ -1,13 +1,18 @@
 # Power Mode
 
-Add an almighty power to your Atom
+> Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
 
-Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
+![](https://github.com/lukyth/power-mode/raw/master/screenshot.gif)
+
+Add an almighty power to your Atom
 
 ## Installation
 ```
 apm install power-mode
 ```
+
+## Usage
+Just move the cursor and see
 
 ## TODO
 - [ ] Write tests
