@@ -5,7 +5,9 @@ Add an almighty power to your Atom
 Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
 
 ## Installation
-` apm install power-mode
+```
+apm install power-mode
+```
 
 ## TODO
 - [ ] Write tests
