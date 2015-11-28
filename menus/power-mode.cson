@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle power-mode'
+      'command': 'power-mode:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'power-mode'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'power-mode:toggle'
+        }
+      ]
+    ]
+  }
+]
