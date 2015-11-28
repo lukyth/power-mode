@@ -1,7 +1,7 @@
 {
   "name": "power-mode",
   "main": "./lib/power-mode",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Add an almighty power to your Atom",
   "keywords": [],
   "activationCommands": {},
