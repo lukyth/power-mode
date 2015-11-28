@@ -33,7 +33,7 @@ module.exports = PowerMode =
 
     @editor = document.getElementsByTagName("atom-workspace")[0]
     @canvas = @powerModeView.getElement()
-    @canvasContext = @powerModeView.getElementContext()
+    @canvasContext = @canvas.getContext "2d"
 
     @throttledShake = _.throttle @shake, 100, trailing: false
     @throttledSpawnParticles = _.throttle @spawnParticles, 25, trailing: false
@@ -52,7 +52,7 @@ module.exports = PowerMode =
   serialize: ->
     powerModeViewState: @powerModeView.serialize()
 
-  onFrame: (time) ->
+  onFrame: ->
     @canvasContext.clearRect 0, 0, @canvas.width, @canvas.height
 
     for particle in @particles
@@ -90,7 +90,7 @@ module.exports = PowerMode =
       y: @PARTICLE_VELOCITY_RANGE.y[0] + Math.random() *
         (@PARTICLE_VELOCITY_RANGE.y[1] - @PARTICLE_VELOCITY_RANGE.y[0])
 
-  drawParticles: (timeDelta) ->
+  drawParticles: ->
     @canvasContext.clearRect 0, 0, @canvas.width, @canvas.height
 
     for particle in @particles
@@ -115,6 +115,6 @@ module.exports = PowerMode =
       @editor.style.transform = ""
     , 75
 
-  onCursorChange: (e) ->
+  onCursorChange: ->
     @throttledShake()
     _.defer => @throttledSpawnParticles()
