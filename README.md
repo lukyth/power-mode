@@ -1,5 +1,8 @@
 # Power Mode
 
+### This is now deprecated in favor of [this package](https://atom.io/packages/activate-power-mode)
+
+
 > Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
 
 ![](https://github.com/lukyth/power-mode/raw/master/screenshot.gif)
