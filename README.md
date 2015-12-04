@@ -13,6 +13,9 @@ before is :
 
 Add an almighty power to your Atom
 
+ps: This clould used by http://rawgit.com/
+
+
 ## Installation
 ```
 apm install power-mode
