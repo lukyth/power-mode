@@ -4,6 +4,7 @@
 
 
 > Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
+
 after  is : 
 ![](https://cdn.rawgit.com/uniquechao/power-mode/master/power-mode-show.gif)
 
