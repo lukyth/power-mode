@@ -5,9 +5,16 @@
 
 > Inspired by this [pull request](https://github.com/codeinthedark/editor/pull/1)
 
+after  is : 
+![](https://cdn.rawgit.com/uniquechao/power-mode/master/power-mode-show.gif)
+
+before is :
 ![](https://github.com/lukyth/power-mode/raw/master/screenshot.gif)
 
 Add an almighty power to your Atom
+
+ps: This clould used by http://rawgit.com/
+
 
 ## Installation
 ```

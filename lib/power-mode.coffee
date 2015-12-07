@@ -6,7 +6,8 @@ module.exports = PowerMode =
   powerModeView: null
 
   MAX_PARTICLES: 500
-  PARTICLE_NUM_RANGE: [5..12]
+  PARTICLE_NUM_RANGE: [10..50]
+  COLOR_RANGE:[20..254]
   PARTICLE_GRAVITY: 0.075
   PARTICLE_ALPHA_FADEOUT: 0.96
   PARTICLE_VELOCITY_RANGE:
@@ -14,7 +15,6 @@ module.exports = PowerMode =
     y: [-3.5, -1.5]
 
   OFFSET: 40
-
   particles: []
   particlePointer: 0
   lastDraw: 0
@@ -70,12 +70,14 @@ module.exports = PowerMode =
 
   getCursorPosition: ->
     {x: Math.random() * @canvas.width + @OFFSET, y: Math.random() * @canvas.height + @OFFSET}
+    # {x: @OFFSET, y:  @OFFSET}
 
   spawnParticles: ->
     {x, y} = @getCursorPosition()
     numParticles = _.sample(@PARTICLE_NUM_RANGE)
-    color = [255, 255, 255]
+    color = [0, 0, 255]
     _.times numParticles, =>
+      color = [_.sample(@COLOR_RANGE), _.sample(@COLOR_RANGE), _.sample(@COLOR_RANGE)]
       @particles[@particlePointer] = @createParticle x, y, color
       @particlePointer = (@particlePointer + 1) % @MAX_PARTICLES
 
@@ -105,16 +107,16 @@ module.exports = PowerMode =
       @canvasContext.fillRect Math.round(particle.x - 1), Math.round(particle.y - 1), 3, 3
 
   shake: ->
-    intensity = 1 + 2 * Math.random()
-    x = intensity * (if Math.random() > 0.5 then -1 else 1)
-    y = intensity * (if Math.random() > 0.5 then -1 else 1)
-
-    @editor.style.transform = "translate3d(#{x}px, #{y}px, 0)"
-
-    setTimeout =>
-      @editor.style.transform = ""
-    , 75
+    # intensity = 1 + 2 * Math.random()
+    # x = intensity * (if Math.random() > 0.5 then -1 else 1)
+    # y = intensity * (if Math.random() > 0.5 then -1 else 1)
+    #
+    # @editor.style.transform = "translate3d(#{x}px, #{y}px, 0)"
+    #
+    # setTimeout =>
+    #   @editor.style.transform = ""
+    # , 75
 
   onCursorChange: ->
-    @throttledShake()
+    # @throttledShake()
     _.defer => @throttledSpawnParticles()
